@@ -28,5 +28,9 @@ return new class extends Migration
     public function down(): void
     {
         // Schema::dropIfExists('documento');
+        Schema::table('documento', function (Blueprint $table) {
+            $table->foreign('tp_documento')->references('id')->on('tp_documento');
+        });
+
     }
 };

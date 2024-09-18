@@ -17,7 +17,17 @@ class Documento extends Model
         'tp_documento'
     ];
     protected $hidden = [
-        'id',
-        'id_cliente'
+        'id_cliente',
+        'created_at',
+        'updated_at'
+
     ];
+
+    public function cliente(){
+        return $this->hasOne(Cliente::class, 'id', 'id_cliente');
+    }
+
+    public function tp_documento(){
+        return $this->hasOne(TpDocumento::class, 'id', 'tp_documento');
+    }
 }

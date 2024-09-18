@@ -25,4 +25,6 @@ class Endereco extends Model
         'id',
         'id_cliente'
     ];
+
+
 }

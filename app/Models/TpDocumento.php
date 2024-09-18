@@ -16,4 +16,8 @@ class TpDocumento extends Model
         'id',
         'documento'
     ];
+
+    public function documento(){
+        return $this->hasMany(Documento::class, 'tp_documento', 'id');
+    }
 }

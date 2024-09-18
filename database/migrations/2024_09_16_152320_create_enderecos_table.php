@@ -33,8 +33,5 @@ return new class extends Migration
     public function down(): void
     {
         // Schema::dropIfExists('endereco');
-        Schema::table('endereco', function (Blueprint $table) {
-            $table->foreign('id_cliente')->references('id')->on('cliente');
-        });
     }
 };

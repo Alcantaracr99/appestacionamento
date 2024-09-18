@@ -12,7 +12,7 @@ class ClienteController extends Controller
 {
     public function listar(){
         try{
-            $cliente = Cliente::get();
+            $cliente = Cliente::with(['documento.tp_documento'])->get();
             $message = "";
             $tamanhoCliente = sizeOf($cliente);
 
@@ -34,7 +34,7 @@ class ClienteController extends Controller
 
     public function mostrarPorId($id){
         try{
-            $cliente = Cliente::with('endereco')->find($id);
+            $cliente = Cliente::with('documento.tp_documento')->find($id);
             $message = "";
 
             if($cliente)

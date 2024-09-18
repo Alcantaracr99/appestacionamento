@@ -17,7 +17,7 @@ class Cliente extends Model
         'nome'
     ];
 
-    public function endereco(){
-        return $this->hasMany(Endereco::class, 'id_cliente', 'id');
+    public function documento(){
+        return $this->hasOne(Documento::class, 'id_cliente', 'id');
     }
 }

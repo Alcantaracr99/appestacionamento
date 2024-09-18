@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Cliente::factory(5)->create();
+        // Cliente::factory(5)->create();
         $this->call(StatusRegistroSeeder::class);
         $this->call(TpDocumentoSeeder::class);
         $this->call(TpTelefoneSeeder::class);

@@ -8,6 +8,8 @@ use App\Http\Middleware\VerificarEnderecoMiddleware;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\StatusRegistroController;
 use App\Http\Controllers\TpDocumentoController;
 use App\Http\Controllers\TpTelefoneController;
@@ -24,27 +26,27 @@ Route::group(['prefix' => '/cliente'], function(){
 });
 
 Route::group(['prefix' => '/contato'], function(){
-    Route::get('/buscar-id/{id}', [ContatoController::class, 'buscarContatoPeloId']);
-    Route::get('/listar/{idCliente}', [ContatoController::class, 'listarContatosPeloIdCliente']);
+    Route::get('/{id}', [ContatoController::class, 'buscarContatoPeloId']);
+    Route::get('/cliente/{idCliente}', [ContatoController::class, 'listarContatosPeloIdCliente']);
     Route::post('/criar', [ContatoController::class, 'criar'])->middleware(VerificarContatoMiddleware::class);
     Route::put('/atualizar/{id}', [ContatoController::class, 'atualizar'])->middleware(VerificarContatoMiddleware::class);
     Route::delete('/remover/{id}', [ContatoController::class, 'remover']);
 });
 
 Route::group(['prefix' => '/documento'], function(){
-    Route::get('/buscar-id/{id}', [ContatoController::class, 'buscarDocumentoPeloId']);
-    Route::get('/listar/{idCliente}', [ContatoController::class, 'listarDocumentosPeloIdCliente']);
-    Route::post('/criar', [ContatoController::class, 'criar'])->middleware(VerificarDocumentoMiddleware::class);
-    Route::put('/atualizar/{id}', [ContatoController::class, 'atualizar'])->middleware(VerificarDocumentoMiddleware::class);
-    Route::delete('/remover/{id}', [ContatoController::class, 'remover']);
+    Route::get('/{id}', [DocumentoController::class, 'buscarDocumentoPeloId']);
+    Route::get('/cliente/{idCliente}', [DocumentoController::class, 'listarDocumentosPeloIdCliente']);
+    Route::post('/criar', [DocumentoController::class, 'criar'])->middleware(VerificarDocumentoMiddleware::class);
+    Route::put('/atualizar/{id}', [DocumentoController::class, 'atualizar'])->middleware(VerificarDocumentoMiddleware::class);
+    Route::delete('/remover/{id}', [DocumentoController::class, 'remover']);
 });
 
 Route::group(['prefix' => '/endereco'], function(){
-    Route::get('/buscar-id/{id}', [ContatoController::class, 'buscarEnderecoPeloId']);
-    Route::get('/listar/{idCliente}', [ContatoController::class, 'listarEnderecosPeloIdCliente']);
-    Route::post('/criar', [ContatoController::class, 'criar'])->middleware(VerificarEnderecoMiddleware::class);
-    Route::put('/atualizar/{id}', [ContatoController::class, 'atualizar'])->middleware(VerificarEnderecoMiddleware::class);
-    Route::delete('/remover/{id}', [ContatoController::class, 'remover']);
+    Route::get('/{id}', [EnderecoController::class, 'buscarEnderecoPeloId']);
+    Route::get('/cliente/{idCliente}', [EnderecoController::class, 'listarEnderecosPeloIdCliente']);
+    Route::post('/criar', [EnderecoController::class, 'criar'])->middleware(VerificarEnderecoMiddleware::class);
+    Route::put('/atualizar/{id}', [EnderecoController::class, 'atualizar'])->middleware(VerificarEnderecoMiddleware::class);
+    Route::delete('/remover/{id}', [EnderecoController::class, 'remover']);
 });
 
 Route::group(['prefix' => '/carro_cliente'], function(){
