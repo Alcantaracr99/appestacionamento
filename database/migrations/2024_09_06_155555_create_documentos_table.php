@@ -16,7 +16,9 @@ return new class extends Migration
                 $table->increments('id');
                 $table->string('documento');
                 $table->integer('id_cliente')->unsigned();
+                $table->foreign('id_cliente')->references('id')->on('cliente');
                 $table->integer('tp_documento')->unsigned();
+                $table->foreign('tp_documento')->references('id')->on('tp_documento');
                 $table->timestamp('created_at');
                 $table->timestamp('updated_at')->nullable();
             });
@@ -28,9 +30,5 @@ return new class extends Migration
     public function down(): void
     {
         // Schema::dropIfExists('documento');
-        Schema::table('documento', function (Blueprint $table) {
-            $table->foreign('tp_documento')->references('id')->on('tp_documento');
-        });
-
     }
 };
