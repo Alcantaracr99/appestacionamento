@@ -17,9 +17,10 @@ class VerificarContatoMiddleware
     {
         $telefone = $request->telefone;
         $email = $request->email;
-
-        if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
-            return response()->json(['error' => 'Email inválido.'], 400);
+        if($email){
+            if (!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
+                return response()->json(['error' => 'Email inválido.'], 400);
+            }
         }
 
         if(empty($telefone) || is_null($telefone))
